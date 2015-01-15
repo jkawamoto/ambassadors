@@ -2,7 +2,7 @@
 FROM ubuntu:latest
 MAINTAINER Junpei Kawamoto <kawamoto.junpei@gmail.com>
 
-RUN apt-get update && apt-get install -y socat mongodb
+RUN apt-get update && apt-get install -y socat
 
 ADD entrypoint.sh /root/
 

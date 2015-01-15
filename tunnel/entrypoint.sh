@@ -1,3 +1,4 @@
 #!/bin/bash
-exec ssh -ND 0.0.0.0:10080 -o StrictHostKeyChecking=no ${USER}@${HOST}
+echo "ssh -ND 0.0.0.0:${PROXY_PORT} -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no ${USER}@${HOST} -p ${PORT}"
+exec ssh -ND 0.0.0.0:${PROXY_PORT} -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no ${USER}@${HOST} -p ${PORT}
 

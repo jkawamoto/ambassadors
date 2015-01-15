@@ -6,5 +6,9 @@ RUN apt-get update && apt-get install -y ssh
 
 ADD entrypoint.sh /root/
 
-EXPOSE 10080
+ENV USER tunnel
+ENV PORT 10022
+ENV PROXY_PORT 1080
+
+EXPOSE 1080
 ENTRYPOINT ["/root/entrypoint.sh"]
