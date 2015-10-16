@@ -20,18 +20,18 @@ case "$1" in
 		chmod 700 /home/${USER}/.ssh
 		chmod 600 /home/${USER}/.ssh/authorized_keys
 		chown -R ${USER}:${USER} /home/${USER}/.ssh
-		
+
 		for ADDR in `env | grep "_PORT=tcp:"`; do
-			
+
 			IPPORT=${ADDR#*//}
 			HOST=${IPPORT%:*}
 			PORT=${IPPORT#*:}
-			
+
 			echo "socat TCP4-LISTEN:${PORT},fork,reuseaddr TCP4:${HOST}:${PORT}"
 			socat TCP4-LISTEN:${PORT},fork,reuseaddr TCP4:${HOST}:${PORT} &
-			
-		done   
-		
+
+		done
+
 		/usr/sbin/sshd -D
 		;;
 
@@ -50,5 +50,10 @@ case "$1" in
 
 		echo "ssh -ND 0.0.0.0:${PROXY_PORT} -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no ${USER}@${HOST} -p ${PORT}"
 		exec ssh -ND 0.0.0.0:${PROXY_PORT} -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no ${USER}@${HOST} -p ${PORT}
+		;;
+
+	*)
+
+		exec $@
 
 esac
