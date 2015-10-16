@@ -7,7 +7,7 @@
 #
 # http://opensource.org/licenses/mit-license.php
 #
-FROM ubuntu:latest
+FROM resin/rpi-raspbian:wheezy-2015-10-07
 MAINTAINER Junpei Kawamoto <kawamoto.junpei@gmail.com>
 
 # Install relative packages.
