@@ -60,4 +60,3 @@ $ docker run -d --link mysql_ambassadors:mysql --link mongo_ambassadors:mongo so
 License
 =======
 This software is released under the MIT License, see LICENSE.
-
