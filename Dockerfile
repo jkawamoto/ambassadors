@@ -11,7 +11,8 @@ FROM ubuntu:latest
 MAINTAINER Junpei Kawamoto <kawamoto.junpei@gmail.com>
 
 # Install relative packages.
-RUN apt-get update && apt-get install -y ssh socat
+RUN apt-get update && apt-get install -y ssh socat && \
+    apt-get clean && rm -rf /var/cache/apt/archives/* /var/lib/apt/lists/
 
 # For sshd in server.
 RUN mkdir /var/run/sshd
