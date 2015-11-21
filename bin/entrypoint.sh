@@ -49,7 +49,7 @@ case "$1" in
 	tunnel)
 
 		echo "ssh -ND 0.0.0.0:${PROXY_PORT} -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -p ${PORT} ${USER}@${HOST}"
-		exec ssh -ND 0.0.0.0:${PROXY_PORT} -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -p ${PORT} ${USER}@${HOST} 
+		exec ssh -ND 0.0.0.0:${PROXY_PORT} -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -p ${PORT} ${USER}@${HOST}
 		;;
 
 	*)

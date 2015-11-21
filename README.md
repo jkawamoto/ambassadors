@@ -1,5 +1,7 @@
 AmbassadorS
 ============
+[![MIT License](http://img.shields.io/badge/license-MIT-blue.svg?style=flat)](LICENSE)
+
 Yet another Ambassador pattern over SSH.
 
 Install
@@ -59,4 +61,4 @@ $ docker run -d --link mysql_ambassadors:mysql --link mongo_ambassadors:mongo so
 
 License
 =======
-This software is released under the MIT License, see LICENSE.
+This software is released under the MIT License, see [LICENSE](LICENSE).
