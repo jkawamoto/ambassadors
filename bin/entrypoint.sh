@@ -12,10 +12,17 @@ case "$1" in
 
 	server)
 
-		useradd -m ${USER}
+		if [ ! -f /etc/ssh/ssh_host_rsa_key ]; then
+
+			/usr/bin/ssh-keygen -t rsa -N "" -f /etc/ssh/ssh_host_rsa_key
+
+		fi
+
+		adduser -S ${USER}
+		addgroup -S ${USER}
 		sed -ri "s/^(${USER}):[^:]*:(.*)$/\1:*:\2/" /etc/shadow
 
-		mkdir /home/${USER}/.ssh
+		mkdir -p /home/${USER}/.ssh
 		cp /data/authorized_keys /home/${USER}/.ssh/
 		chmod 700 /home/${USER}/.ssh
 		chmod 600 /home/${USER}/.ssh/authorized_keys

@@ -1,23 +1,24 @@
 #
 # Dockerfile
 #
-# Copyright (c) 2015 Junpei Kawamoto
+# Copyright (c) 2015-2016 Junpei Kawamoto
 #
 # This software is released under the MIT License.
 #
 # http://opensource.org/licenses/mit-license.php
 #
-FROM ubuntu:latest
+FROM alpine:latest
 MAINTAINER Junpei Kawamoto <kawamoto.junpei@gmail.com>
 
 # Install relative packages.
-RUN apt-get update && apt-get install -y ssh socat && \
-    apt-get clean && rm -rf /var/cache/apt/archives/* /var/lib/apt/lists/
+RUN apk -U add bash openssh socat && rm -rf /var/cache/apk/*
 
 # For sshd in server.
 RUN mkdir /var/run/sshd
-RUN sed -ri 's/^UsePAM yes/UsePAM no/' /etc/ssh/sshd_config \
-	 &&	echo "AuthorizedKeysFile %h/.ssh/authorized_keys" >> /etc/ssh/sshd_config
+RUN echo "Protocol 2" >> /etc/ssh/sshd_config && \
+		echo "PasswordAuthentication no" >> /etc/ssh/sshd_config && \
+		echo "PubkeyAuthentication yes" >> /etc/ssh/sshd_config && \
+		echo "HostKey /etc/ssh/ssh_host_rsa_key" >> /etc/ssh/sshd_config
 
 # IP address to connect (used in tunnel).
 ENV HOST 127.0.0.1
