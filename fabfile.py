@@ -2,7 +2,7 @@
 #
 # fabfile.py
 #
-# Copyright (c) 2015 Junpei Kawamoto
+# Copyright (c) 2015-2016 Junpei Kawamoto
 #
 # This software is released under the MIT License.
 #

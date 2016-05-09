@@ -2,7 +2,7 @@
 #
 # entrypoint.sh
 #
-# Copyright (c) 2015 Junpei Kawamoto
+# Copyright (c) 2015-2016 Junpei Kawamoto
 #
 # This software is released under the MIT License.
 #
@@ -34,12 +34,17 @@ case "$1" in
 			HOST=${IPPORT%:*}
 			PORT=${IPPORT#*:}
 
-			echo "socat TCP4-LISTEN:${PORT},fork,reuseaddr TCP4:${HOST}:${PORT}"
-			socat TCP4-LISTEN:${PORT},fork,reuseaddr TCP4:${HOST}:${PORT} &
+			echo "socat $2 TCP4-LISTEN:${PORT},fork,reuseaddr TCP4:${HOST}:${PORT}"
+			socat $2 TCP4-LISTEN:${PORT},fork,reuseaddr TCP4:${HOST}:${PORT} &
 
 		done
 
-		/usr/sbin/sshd -D
+		if [ $2 = "-v" ]; then
+			SSHD_FLAG=-d
+		fi
+
+		echo "/usr/sbin/sshd -D $SSHD_FLAG"
+		/usr/sbin/sshd -D $SSHD_FLAG
 		;;
 
 
@@ -48,15 +53,15 @@ case "$1" in
 		PROXY_IPPORT=${TUNNEL_PORT#*//}
 		PROXY_IP=${PROXY_IPPORT%:*}
 
-		echo "socat TCP-LISTEN:${PORT},fork,reuseaddr SOCKS4:${PROXY_IP}:${HOST}:${PORT},socksport=${TUNNEL_ENV_PROXY_PORT}"
-		exec socat TCP-LISTEN:${PORT},fork,reuseaddr SOCKS4:${PROXY_IP}:${HOST}:${PORT},socksport=${TUNNEL_ENV_PROXY_PORT}
+		echo "socat $2 TCP-LISTEN:${PORT},fork,reuseaddr SOCKS4:${PROXY_IP}:${HOST}:${PORT},socksport=${TUNNEL_ENV_PROXY_PORT}"
+		exec socat $2 TCP-LISTEN:${PORT},fork,reuseaddr SOCKS4:${PROXY_IP}:${HOST}:${PORT},socksport=${TUNNEL_ENV_PROXY_PORT}
 		;;
 
 
 	tunnel)
 
-		echo "ssh -ND 0.0.0.0:${PROXY_PORT} -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -p ${PORT} ${USER}@${HOST}"
-		exec ssh -ND 0.0.0.0:${PROXY_PORT} -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -p ${PORT} ${USER}@${HOST}
+		echo "ssh $2 -ND 0.0.0.0:${PROXY_PORT} -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -p ${PORT} ${USER}@${HOST}"
+		exec ssh $2 -ND 0.0.0.0:${PROXY_PORT} -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -p ${PORT} ${USER}@${HOST}
 		;;
 
 	*)
