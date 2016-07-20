@@ -1,6 +1,7 @@
 AmbassadorS
 ============
 [![MIT License](http://img.shields.io/badge/license-MIT-blue.svg?style=flat)](LICENSE)
+[![Japanese](https://img.shields.io/badge/qiita-%E6%97%A5%E6%9C%AC%E8%AA%9E-brightgreen.svg)](http://qiita.com/jkawamoto/items/4b87d0f61ab3fbbd2897)
 
 Yet another [Ambassador pattern](https://docs.docker.com/engine/admin/ambassador_pattern_linking/) over SSH.
 
