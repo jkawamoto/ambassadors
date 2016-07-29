@@ -11,6 +11,7 @@ FROM alpine:latest
 MAINTAINER Junpei Kawamoto <kawamoto.junpei@gmail.com>
 
 # Install relative packages.
+ENV TERM vt100
 RUN apk -U add bash openssh socat && rm -rf /var/cache/apk/*
 
 # For sshd in server.
