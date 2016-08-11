@@ -1,0 +1,11 @@
+baseurl = "https://jkawamoto.github.io/ambassadors/"
+languageCode = "en-us"
+title = "AmbassadorS"
+theme = "purehugo"
+Paginate = 10
+disqusShortname = "ambassadors-1"
+
+[params]
+  githubName = "jkawamoto/ambassadors"
+  description = "Yet another Ambassador pattern over SSH"
+  google_analytics = "UA-82315630-1"
