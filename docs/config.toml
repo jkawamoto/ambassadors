@@ -1,4 +1,4 @@
-baseurl = "https://jkawamoto.github.io/ambassadors/"
+baseurl = "https://jkawamoto.github.io/ambassadors"
 languageCode = "en-us"
 title = "AmbassadorS"
 theme = "purehugo"
