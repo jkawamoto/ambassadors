@@ -2,7 +2,7 @@
 #
 # fabfile.py
 #
-# Copyright (c) 2015-2016 Junpei Kawamoto
+# Copyright (c) 2015-2017 Junpei Kawamoto
 #
 # This software is released under the MIT License.
 #
@@ -16,7 +16,7 @@ PACKAGE = "ambassadors"
 
 @task
 def build():
-    """ Build a Docker image.
+    """Build a Docker image.
     """
     run("mkdir -p " + PACKAGE)
     rsync_project(
@@ -26,7 +26,7 @@ def build():
 
 @task
 def rpi_build():
-    """ Build a Docker image for Raspberry Pi.
+    """Build a Docker image for Raspberry Pi.
     """
     run("mkdir -p " + PACKAGE)
     rsync_project(

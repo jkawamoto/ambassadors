@@ -2,7 +2,7 @@
 #
 # entrypoint.sh
 #
-# Copyright (c) 2015-2016 Junpei Kawamoto
+# Copyright (c) 2015-2017 Junpei Kawamoto
 #
 # This software is released under the MIT License.
 #
@@ -11,11 +11,8 @@
 case "$1" in
 
 	server)
-
-		if [ ! -f /etc/ssh/ssh_host_rsa_key ]; then
-
+		if [[ ! -f /etc/ssh/ssh_host_rsa_key ]]; then
 			/usr/bin/ssh-keygen -t rsa -N "" -f /etc/ssh/ssh_host_rsa_key
-
 		fi
 
 		adduser -S ${USER}
@@ -28,18 +25,16 @@ case "$1" in
 		chmod 600 /home/${USER}/.ssh/authorized_keys
 		chown -R ${USER}:${USER} /home/${USER}/.ssh
 
-		for ADDR in `env | grep "_PORT=tcp:"`; do
-
+		for ADDR in $(env | grep "_PORT=tcp:"); do
 			IPPORT=${ADDR#*//}
 			HOST=${IPPORT%:*}
 			PORT=${IPPORT#*:}
 
 			echo "socat $2 TCP4-LISTEN:${PORT},fork,reuseaddr TCP4:${HOST}:${PORT}"
 			socat $2 TCP4-LISTEN:${PORT},fork,reuseaddr TCP4:${HOST}:${PORT} &
-
 		done
 
-		if [ $2 = "-v" ]; then
+		if [[ $2 = "-v" ]]; then
 			SSHD_FLAG=-d
 		fi
 
@@ -47,25 +42,20 @@ case "$1" in
 		/usr/sbin/sshd -D $SSHD_FLAG
 		;;
 
-
 	client)
-
-		PROXY_IPPORT=${TUNNEL_PORT#*//}
-		PROXY_IP=${PROXY_IPPORT%:*}
+		readonly PROXY_IPPORT=${TUNNEL_PORT#*//}
+		readonly PROXY_IP=${PROXY_IPPORT%:*}
 
 		echo "socat $2 TCP-LISTEN:${PORT},fork,reuseaddr SOCKS4:${PROXY_IP}:${HOST}:${PORT},socksport=${TUNNEL_ENV_PROXY_PORT}"
 		exec socat $2 TCP-LISTEN:${PORT},fork,reuseaddr SOCKS4:${PROXY_IP}:${HOST}:${PORT},socksport=${TUNNEL_ENV_PROXY_PORT}
 		;;
 
-
 	tunnel)
-
 		echo "ssh $2 -ND 0.0.0.0:${PROXY_PORT} -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -p ${PORT} ${USER}@${HOST}"
 		exec ssh $2 -ND 0.0.0.0:${PROXY_PORT} -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -p ${PORT} ${USER}@${HOST}
 		;;
 
 	*)
-
 		exec $@
 
 esac
