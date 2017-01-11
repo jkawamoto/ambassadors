@@ -6,6 +6,8 @@ AmbassadorS
 [![Release](https://img.shields.io/badge/release-1.0.1-brightgreen.svg)](https://github.com/jkawamoto/ambassadors/releases/tag/v1.0.1)
 [![Japanese](https://img.shields.io/badge/qiita-%E6%97%A5%E6%9C%AC%E8%AA%9E-brightgreen.svg)](http://qiita.com/jkawamoto/items/4b87d0f61ab3fbbd2897)
 
+![Logo](https://jkawamoto.github.io/ambassadors/img/secure-link.png)
+
 Yet another [Ambassador pattern](https://docs.docker.com/engine/admin/ambassador_pattern_linking/) over SSH.
 
 
