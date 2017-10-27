@@ -15,18 +15,36 @@
   <meta property="og:title" content="{{ .Title }} &middot; {{ .Site.Title }}">
   <meta property="og:description" content="{{ if .IsNode }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ else }}{{ with .Description }}{{ . }}{{ end }}{{ end }}">
   {{ with .Site.Params.image }}
-  <meta property="og:image" content="{{ .Site.BaseURL }}{{ . }}">
+  <meta property="og:image" content="{{ $.Site.BaseURL }}{{ . }}">
   {{ end }}
-
-  <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:400,700|Oxygen:400,700' rel='stylesheet' type='text/css'>
-  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/pure-min.css">
-  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-min.css">
 
   <link rel="stylesheet" href="css/all.min.css" />
   <link rel="stylesheet" href="css/custom.css" />
   <link rel="stylesheet" href="css/remodal.css" />
   <link rel="stylesheet" href="css/remodal-default-theme.css" />
-  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" />
+
+  <link class="subresource" rel="subresource" as="stylesheet" type="text/css"
+        href="//cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/pure-min.css" />
+  <link class="subresource" rel="subresource" as="stylesheet" type="text/css"
+        href="//cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-min.css" />
+  <link class="subresource" rel="subresource" as="stylesheet" type="text/css"
+        href="//fonts.googleapis.com/css?family=Source+Sans+Pro:400,700|Oxygen:400,700" />
+  <link class="subresource" rel="subresource" as="stylesheet" type="text/css"
+        href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" />
+  <noscript>
+    <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/pure-min.css" />
+    <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-min.css" />
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Source+Sans+Pro:400,700|Oxygen:400,700" />
+    <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" />
+  </noscript>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const subresource = document.getElementsByClassName("subresource");
+      for(let i = 0; i != subresource.length; i++){
+        subresource[i].setAttribute("rel", "stylesheet");
+      }
+    });
+  </script>
 
   <link rel="alternate" type="application/rss+xml" title="{{ .Site.Title }}" href="{{ .Site.BaseURL }}/index.xml" />
 </head>
