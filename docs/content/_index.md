@@ -1,8 +1,12 @@
-+++
-Description = ""
-date = "2016-08-11T15:06:48-04:00"
-title = ""
-+++
+---
+title: Ambassadors
+type: homepage
+date: 2016-08-11
+lastmod: 2017-10-28
+weight: 1
+description: >-
+  Yet another Ambassador pattern over SSH.
+---
 [![MIT License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](LICENSE)
 [![Dockerhub](https://img.shields.io/badge/dockerhub-jkawamoto%2Fambassadors-blue.svg)](https://hub.docker.com/r/jkawamoto/ambassadors/)
 [![Dockerhub](https://img.shields.io/badge/dockerhub-jkawamoto%2Frpi--ambassadors-blue.svg)](https://hub.docker.com/r/jkawamoto/rpi-ambassadors/)
@@ -31,7 +35,7 @@ $ docker pull jkawamoto/rpi-ambassadors
 
 Usage
 -------
-~~~
+~~~sh
 $ docker run -dt jkawamoto/ambassadors (server|client|tunnel) [-v]
 
 Options:

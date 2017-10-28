@@ -1,0 +1,61 @@
+<head {{ with .Site.LanguageCode }}lang="{{ . }}"{{ end }}>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+  {{ with .Site.Params.description -}}
+  <meta name="description" content="{{ . }}">
+  {{- end }}
+  {{ .Hugo.Generator }}
+
+  <title>{{ if not .IsHome }}{{ .Title }} &mdash;{{ end }}{{ .Site.Title }}</title>
+
+  <style>
+  {{- partial "basic.min.css" . | safeCSS -}}
+  {{- partial "alabaster.min.css" . | safeCSS -}}
+  {{ with .Site.Params.custom_css }}
+  {{- . | safeCSS -}}
+  {{ end }}
+  </style>
+
+  {{ with .Site.Params.highlightjs -}}
+  <link class="subresource" rel="subresource" as="stylesheet" type="text/css" href="{{ . }}"/>
+  <noscript>
+    <link rel="stylesheet" href="{{ . }}" type="text/css" />
+  </noscript>
+  {{- else -}}
+  <link class="subresource" rel="subresource" as="stylesheet" type="text/css" href="{{ $.Site.BaseURL }}css/pygments.css" />
+  <noscript>
+    <link rel="stylesheet" href="{{ $.Site.BaseURL }}css/pygments.css" type="text/css" />
+  </noscript>
+  {{- end }}
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const subresource = document.getElementsByClassName("subresource");
+      for(let i = 0; i != subresource.length; i++){
+        subresource[i].setAttribute("rel", "stylesheet");
+      }
+    });
+  </script>
+
+  {{ with .Site.Params.favicon -}}
+  <link rel="shortcut icon" href="{{ $.Site.BaseURL }}{{ . }}" type="image/x-icon"/>
+  {{- else -}}
+  <link rel="shortcut icon" href="{{ $.Site.BaseURL }}favicon.ico" type="image/x-icon"/>
+  {{- end }}
+
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="{{ if not .IsHome }}{{ .Title }} &mdash;{{ end }}{{ .Site.Title }}" />
+  {{ if isset .Params "description" }}
+  <meta name="og:description" content="{{ .Params.description }}" />
+  {{ else }}
+  <meta name="og:description" content="{{ with .Site.Params.description }}{{ . }}{{ end }}" />
+  {{ end }}
+  <meta property="og:image" content="{{ .Site.BaseURL }}{{ .Site.Params.image }}" />
+  <meta property="og:site_name"  content="{{ .Site.Title }}" />
+
+  {{ if isset .Params "description" }}
+  <meta name="twitter:card" content="{{ .Params.description }}" />
+  {{ else }}
+  <meta name="twitter:card" content="{{ with .Site.Params.description }}{{ . }}{{ end }}" />
+  {{ end }}
+  <meta name="twitter:site" content="{{ .Site.Params.twitter }}" />
+</head>

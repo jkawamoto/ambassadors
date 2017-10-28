@@ -1,12 +1,46 @@
 baseurl = "https://jkawamoto.github.io/ambassadors/"
 languageCode = "en-us"
+metadataformat = "yaml"
 title = "AmbassadorS"
-theme = "purehugo"
 Paginate = 10
+theme = "hugo-alabaster-theme"
+
 disqusShortname = "ambassadors-1"
+googleAnalytics = "UA-82315630-1"
 
 [params]
-  githubName = "jkawamoto/ambassadors"
+  name = "AmbassadorS"
   description = "Yet another Ambassador pattern over SSH"
-  google_analytics = "UA-82315630-1"
+	github_user   = "jkawamoto"
+	github_repo   = "ambassadors"
+	github_banner = true
+
   image = "img/ambassadors.png"
+
+  google_ad_client = "ca-pub-4734862314145555"
+  google_ad_slot = "7221708629"
+
+  highlightjs = "http://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/agate.min.css"
+  addthis = "ra-57f529147128b1fb"
+
+  custom_css = '''
+pre {
+  padding: 1px;
+}'''
+
+	favicon = "favicon.ico"
+  twitter = "@junkawamoto"
+
+[params.sidebar]
+	logo = "favicon.ico"
+
+	github_button  = true
+	travis_button  = false
+	codecov_button = false
+	gratipay = "~jkawamoto"
+
+	show_relations = false
+
+[params.footer]
+	copyright = "[Junpei Kawamoto](https://github.com/jkawamoto/)"
+	show_powered_by = true
