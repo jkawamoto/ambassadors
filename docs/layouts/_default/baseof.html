@@ -23,15 +23,6 @@
 				<script src="{{ $.Site.BaseURL }}{{ . }}"></script>
 			{{- end }}
 
-			{{ with .Site.Params.highlightjs -}}
-			<script async src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
-      <script>
-        document.addEventListener("DOMContentLoaded", function() {
-          hljs.initHighlightingOnLoad();
-        });
-      </script>
-			{{ end }}
-
 			{{ template "_internal/google_analytics_async.html" . }}
 		</div>
 

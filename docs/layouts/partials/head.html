@@ -21,9 +21,12 @@
 
   {{ with .Site.Params.highlightjs -}}
   <link class="subresource" rel="subresource" as="stylesheet" type="text/css" href="{{ . }}"/>
-  <noscript>
-    <link rel="stylesheet" href="{{ . }}" type="text/css" />
-  </noscript>
+  <script defer type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      hljs.initHighlightingOnLoad();
+    });
+  </script>
   {{- else -}}
   <link class="subresource" rel="subresource" as="stylesheet" type="text/css" href="{{ $.Site.BaseURL }}css/pygments.css" />
   <noscript>
