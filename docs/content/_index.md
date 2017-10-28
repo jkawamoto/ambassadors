@@ -7,16 +7,16 @@ weight: 1
 description: >-
   Yet another Ambassador pattern over SSH.
 ---
-[![MIT License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](LICENSE)
-[![Dockerhub](https://img.shields.io/badge/dockerhub-jkawamoto%2Fambassadors-blue.svg)](https://hub.docker.com/r/jkawamoto/ambassadors/)
-[![Dockerhub](https://img.shields.io/badge/dockerhub-jkawamoto%2Frpi--ambassadors-blue.svg)](https://hub.docker.com/r/jkawamoto/rpi-ambassadors/)
-[![Image information](https://images.microbadger.com/badges/image/jkawamoto/ambassadors.svg)](http://microbadger.com/images/jkawamoto/ambassadors)
-[![Release](https://img.shields.io/badge/release-1.0.0-brightgreen.svg)](https://github.com/jkawamoto/ambassadors/releases/tag/v1.0.0)
-[![Japanese](https://img.shields.io/badge/qiita-%E6%97%A5%E6%9C%AC%E8%AA%9E-brightgreen.svg)](http://qiita.com/jkawamoto/items/4b87d0f61ab3fbbd2897)
+[{{%img "https://img.shields.io/badge/license-MIT-blue.svg?style=flat" "MIT License" 78 20 %}}](https://github.com/jkawamoto/ambassadors/blob/master/LICENSE)
+[{{%img "https://img.shields.io/badge/dockerhub-jkawamoto%2Fambassadors-blue.svg" "Dockerhub" 216 20 %}}](https://hub.docker.com/r/jkawamoto/ambassadors/)
+[{{%img "https://img.shields.io/badge/dockerhub-jkawamoto%2Frpi--ambassadors-blue.svg" "Dockerhub" 234 20 %}}](https://hub.docker.com/r/jkawamoto/rpi-ambassadors/)
+[{{%img "https://images.microbadger.com/badges/image/jkawamoto/ambassadors.svg" "Image information" 130 20 %}}](http://microbadger.com/images/jkawamoto/ambassadors)
+[{{%img "https://img.shields.io/badge/release-1.0.0-brightgreen.svg" "Release" 88 20 %}}](https://github.com/jkawamoto/ambassadors/releases/tag/v1.0.0)
+[{{%img "https://img.shields.io/badge/qiita-%E6%97%A5%E6%9C%AC%E8%AA%9E-brightgreen.svg" "Japanese" 76 20 %}}](http://qiita.com/jkawamoto/items/4b87d0f61ab3fbbd2897)
 
 Yet another [Ambassador pattern](https://docs.docker.com/engine/admin/ambassador_pattern_linking/) over SSH.
 
-![Secure link](img/secure-link.png)
+{{%img "img/secure-link.png" "Secure link" 479 198 true %}}
 
 Install
 --------

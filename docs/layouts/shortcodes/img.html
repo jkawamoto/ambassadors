@@ -1,0 +1,9 @@
+{{ $path := index .Params 0 }}
+{{ $name := index .Params 1 }}
+{{ if $path }}
+  {{ if hasPrefix $path "http"}}
+  <img src="{{ $path }}" alt="{{ $name }}"/>
+  {{ else }}
+  <img src="{{ .Site.BaseURL }}{{ $path }}" alt="{{ $name }}"/>
+  {{ end }}
+{{ end }}

@@ -8,6 +8,10 @@ theme = "hugo-alabaster-theme"
 disqusShortname = "ambassadors-1"
 googleAnalytics = "UA-82315630-1"
 
+[outputs]
+  home = ["HTML", "AMP", "RSS"]
+  page = ["HTML"]
+
 [params]
   name = "AmbassadorS"
   description = "Yet another Ambassador pattern over SSH"
@@ -20,7 +24,7 @@ googleAnalytics = "UA-82315630-1"
   google_ad_client = "ca-pub-4734862314145555"
   google_ad_slot = "7221708629"
 
-  highlightjs = "http://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/agate.min.css"
+  highlightjs = "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/agate.min.css"
   addthis = "ra-57f529147128b1fb"
 
   custom_css = '''

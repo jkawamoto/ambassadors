@@ -1,6 +1,7 @@
 <head {{ with .Site.LanguageCode }}lang="{{ . }}"{{ end }}>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=0.9,maximum-scale=0.9" />
+  <script async src="https://cdn.ampproject.org/v0.js"></script>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0" />
   {{ with .Site.Params.description -}}
   <meta name="description" content="{{ . }}">
   {{- end }}
@@ -9,9 +10,14 @@
   {{ end }}
   {{ .Hugo.Generator }}
 
+  <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style>
+  <noscript>
+    <style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style>
+  </noscript>
+
   <title>{{ if not .IsHome }}{{ .Title }} &mdash;{{ end }}{{ .Site.Title }}</title>
 
-  <style>
+  <style amp-custom>
   {{- partial "basic.min.css" . | safeCSS -}}
   {{- partial "alabaster.min.css" . | safeCSS -}}
   {{ with .Site.Params.custom_css }}
@@ -19,25 +25,11 @@
   {{ end }}
   </style>
 
-  {{ with .Site.Params.highlightjs -}}
-  <link class="subresource" rel="subresource" as="stylesheet" type="text/css" href="{{ . }}"/>
-  <noscript>
-    <link rel="stylesheet" href="{{ . }}" type="text/css" />
-  </noscript>
+  <!-- {{ with .Site.Params.highlightjs -}}
+  <link rel="stylesheet" href="{{ . }}" type="text/css" />
   {{- else -}}
-  <link class="subresource" rel="subresource" as="stylesheet" type="text/css" href="{{ $.Site.BaseURL }}css/pygments.css" />
-  <noscript>
-    <link rel="stylesheet" href="{{ $.Site.BaseURL }}css/pygments.css" type="text/css" />
-  </noscript>
-  {{- end }}
-  <script>
-    document.addEventListener("DOMContentLoaded", function() {
-      const subresource = document.getElementsByClassName("subresource");
-      for(let i = 0; i != subresource.length; i++){
-        subresource[i].setAttribute("rel", "stylesheet");
-      }
-    });
-  </script>
+  <link rel="stylesheet" href="{{ $.Site.BaseURL }}css/pygments.css" type="text/css" />
+  {{- end }} -->
 
   {{ with .Site.Params.favicon -}}
   <link rel="shortcut icon" href="{{ $.Site.BaseURL }}{{ . }}" type="image/x-icon"/>

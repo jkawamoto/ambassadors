@@ -1,0 +1,14 @@
+{{ $path := index .Params 0 }}
+{{ $name := index .Params 1 }}
+{{ $width := index .Params 2 }}
+{{ $height := index .Params 3 }}
+{{ $responsive := index .Params 4 }}
+{{ if $path }}
+  {{ if hasPrefix $path "http"}}
+  <amp-img src="{{ $path }}" alt="{{ $name }}" width="{{ $width }}" height="{{ $height }}"
+            {{ if $responsive }}layout="responsive"{{ end }}></amp-img>
+  {{ else }}
+  <amp-img src="{{ .Site.BaseURL }}{{ $path }}" alt="{{ $name }}" width="{{ $width }}" height="{{ $height }}"
+            {{ if $responsive }}layout="responsive"{{ end }}></amp-img>
+  {{ end }}
+{{ end }}

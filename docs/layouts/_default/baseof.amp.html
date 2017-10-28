@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html amp>
+	{{ partial "head.amp.html" . }}
+
+	<body role="document">
+		<div class="document">
+			<div class="documentwrapper">
+				<div class="bodywrapper">
+					<div class="body" role="main">
+						{{ block "main" . }}{{ end }}
+
+						{{ if not .IsHome -}}
+						{{ template "_internal/disqus.html" . }}
+						{{- end }}
+					</div>
+				</div>
+			</div>
+
+			{{ partial "sidebar/sidebar.amp.html" . }}
+			{{ partial "footer.amp.html" . }}
+
+			{{ range .Site.Params.custom_js -}}
+				<script src="{{ $.Site.BaseURL }}{{ . }}"></script>
+			{{- end }}
+
+			{{ with .Site.Params.highlightjs -}}
+			{{ end }}
+
+			<!-- {{ template "_internal/google_analytics.html" . }} -->
+		</div>
+
+    {{ with .Site.Params.addthis -}}
+    {{- end }}
+
+	</body>
+</html>

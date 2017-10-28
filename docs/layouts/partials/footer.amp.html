@@ -1,0 +1,11 @@
+<div class="footer">
+	&copy; {{ now.Format "2006" }} {{ with .Site.Params.footer.copyright }}{{ . | markdownify }}{{ end }}
+	{{ if .Site.Params.footer.show_powered_by -}}
+	|
+	Powered by <a href="http://gohugo.io/">Hugo {{ .Hugo.Version }}</a>
+	&amp; <a href="https://github.com/digitalcraftsman/hugo-alabaster-theme">Alabaster</a>
+	{{ end }}
+</div>
+
+{{ if .Site.Params.github_banner -}}
+{{- end }}
