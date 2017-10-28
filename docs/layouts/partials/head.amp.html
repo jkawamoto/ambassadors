@@ -1,5 +1,7 @@
 <head {{ with .Site.LanguageCode }}lang="{{ . }}"{{ end }}>
   <meta charset="utf-8" />
+  <script async custom-element="amp-analytics"
+      src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
   <script async src="https://cdn.ampproject.org/v0.js"></script>
   <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0" />
   {{ with .Site.Params.description -}}
@@ -24,12 +26,6 @@
   {{- . | safeCSS -}}
   {{ end }}
   </style>
-
-  <!-- {{ with .Site.Params.highlightjs -}}
-  <link rel="stylesheet" href="{{ . }}" type="text/css" />
-  {{- else -}}
-  <link rel="stylesheet" href="{{ $.Site.BaseURL }}css/pygments.css" type="text/css" />
-  {{- end }} -->
 
   {{ with .Site.Params.favicon -}}
   <link rel="shortcut icon" href="{{ $.Site.BaseURL }}{{ . }}" type="image/x-icon"/>

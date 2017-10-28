@@ -26,7 +26,21 @@
 			{{ with .Site.Params.highlightjs -}}
 			{{ end }}
 
-			<!-- {{ template "_internal/google_analytics.html" . }} -->
+      <amp-analytics type="googleanalytics" id="analytics1">
+      <script type="application/json">
+      {
+        "vars": {
+          "account": "{{ .Site.GoogleAnalytics }}"
+        },
+        "triggers": {
+          "trackPageview": {
+            "on": "visible",
+            "request": "pageview"
+          }
+        }
+      }
+      </script>
+      </amp-analytics>
 		</div>
 
     {{ with .Site.Params.addthis -}}
