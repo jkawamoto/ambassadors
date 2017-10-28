@@ -46,5 +46,5 @@ pre {
 	show_relations = false
 
 [params.footer]
-	copyright = "[Junpei Kawamoto](https://github.com/jkawamoto/)"
+	copyright = "[Junpei Kawamoto](https://www.jkawamoto.info/)"
 	show_powered_by = true
