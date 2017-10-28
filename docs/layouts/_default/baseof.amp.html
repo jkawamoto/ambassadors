@@ -9,9 +9,11 @@
 					<div class="body" role="main">
 						{{ block "main" . }}{{ end }}
 
-						{{ if not .IsHome -}}
-						{{ template "_internal/disqus.html" . }}
-						{{- end }}
+            {{ if isset .Site.Params "google_ad_client" }}
+            <amp-ad layout="responsive" width=300 height=250 type="adsense"
+                    data-ad-client="{{ .Site.Params.google_ad_client }}"
+                    data-ad-slot="{{ .Site.Params.google_ad_slot }}"></amp-ad>
+            {{ end }}
 					</div>
 				</div>
 			</div>
@@ -22,9 +24,6 @@
 			{{ range .Site.Params.custom_js -}}
 				<script src="{{ $.Site.BaseURL }}{{ . }}"></script>
 			{{- end }}
-
-			{{ with .Site.Params.highlightjs -}}
-			{{ end }}
 
       <amp-analytics type="googleanalytics" id="analytics1">
       <script type="application/json">
@@ -42,9 +41,6 @@
       </script>
       </amp-analytics>
 		</div>
-
-    {{ with .Site.Params.addthis -}}
-    {{- end }}
 
 	</body>
 </html>
